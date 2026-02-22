@@ -1,0 +1,16 @@
+#BOX1
+{
+    
+text-align:center;
+padding:15px 5px;
+margin-top:10px;
+margin-bottom: -40px;
+width:100%;
+height:20px;
+border-radius:20px;
+background-color:#000000;
+color:white;
+font-size:30px;
+font-family:Agency FB;
+display: block;
+}
