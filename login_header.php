@@ -1,67 +1,99 @@
-<?php
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<link rel="stylesheet" href="css/header1.css"/>
 <style>
-.navbar{
- background-color:black;
- border-radius:150px;
- }
- .navbar ul{
-  margin:10px 10px;
-  overflow:auto;
-  }
-  .navbar li{
-  font-size:15px;
-  font-weight:bold;
-  font-family:verdana;
-  margin-left:10px;
-  text-align:center;
-  width:135px;
-   float:left;
-   list-style:none;
-   margin:20px 0px;
-   
-   }
-   .navbar li a
-   {
-    padding:3px 3px;
-	text-decoration:none;
-	color:white;
-	}
-	.navbar li a:hover
-	{
-	 color:red;
-	 }
-	 .search{
-	  float:right;
-	  color:white;
-	  padding:10px 70px;
-	  }
-	  .navbar input{
-	   border:10px solid black;
-	   border-radius:14px;
-	   padding:0px 1px;
-	   width:150px;
-	   }
-           </style>
-</head>
-<body>
-<nav class="navbar">
-<ul>
-  <li><a href="homepage.php">HOME</a></li>
-  <li><a href="about_us.php">ABOUT US</a></li>
-  <li><a href="contact_us.php">CONTACT</a></li>
-  <li><a href="help.phps">HELP</a></li>
-  <li><a href="user_login.php">LOGIN</a></li>
+    .osf-top-header-wrap {
+        width: min(1160px, 95%);
+        margin: 12px auto 14px;
+        position: relative;
+        z-index: 100;
+    }
+    .osf-top-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        padding: 11px 13px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #020617 0%, #1e3a8a 58%, #0ea5e9 100%);
+        box-shadow: 0 12px 28px rgba(2, 6, 23, 0.35);
+    }
+    .osf-brand {
+        text-decoration: none;
+        color: #f8fafc;
+        font: 800 16px/1 "Trebuchet MS", "Segoe UI", sans-serif;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        padding: 9px 12px;
+        border-radius: 999px;
+        background: rgba(248, 250, 252, 0.14);
+    }
+    .osf-nav-links {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        flex-wrap: wrap;
+        flex: 1;
+    }
+    .osf-nav-links a {
+        text-decoration: none;
+        color: #e2e8f0;
+        font: 700 13px/1 "Verdana", "Segoe UI", sans-serif;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        padding: 9px 11px;
+        border-radius: 999px;
+        transition: transform .2s ease, background-color .2s ease, color .2s ease;
+        background: rgba(2, 6, 23, 0.26);
+    }
+    .osf-nav-links a:hover {
+        color: #ffffff;
+        background: rgba(2, 6, 23, 0.5);
+        transform: translateY(-1px);
+    }
+    .osf-login-link {
+        text-decoration: none;
+        color: #111827;
+        background: #facc15;
+        font: 800 13px/1 "Verdana", "Segoe UI", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.35px;
+        padding: 9px 12px;
+        border-radius: 999px;
+        transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .osf-login-link:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 16px rgba(250, 204, 21, 0.35);
+    }
+</style>
+<script>
+(() => {
+    const mountHeader = () => {
+        if (document.getElementById('osf-login-header')) return;
 
-<!---<div class="search">
- <input type="text" name="search" id="search" placeholder="search this website">
- </div>---></ul></nav>
- <div class="table">
-</body>
-</html>
+        const wrapper = document.createElement('div');
+        wrapper.id = 'osf-login-header';
+        wrapper.className = 'osf-top-header-wrap';
+        wrapper.innerHTML = `
+            <nav class="osf-top-header">
+                <a href="homepage.php" class="osf-brand">Online Farm</a>
+                <div class="osf-nav-links">
+                    <a href="homepage.php">Home</a>
+                    <a href="about_us.php">About Us</a>
+                    <a href="contact_us.php">Contact</a>
+                    <a href="help.php">Help</a>
+                </div>
+                <a href="user_login.php" class="osf-login-link">Login</a>
+            </nav>
+        `;
+
+        if (document.body) {
+            document.body.insertBefore(wrapper, document.body.firstChild);
+        }
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', mountHeader);
+    } else {
+        mountHeader();
+    }
+})();
+</script>
