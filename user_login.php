@@ -148,6 +148,7 @@ if (isset($_POST['user_name'])) {
         gap: .5rem;
     }
     .tag {
+        display: inline-block;
         padding: .42rem .65rem;
         border-radius: 999px;
         background: rgba(248,250,252,0.14);
@@ -155,6 +156,14 @@ if (isset($_POST['user_name'])) {
         font-size: .78rem;
         letter-spacing: .35px;
         text-transform: uppercase;
+        text-decoration: none;
+        color: #f8fafc;
+        transition: transform .2s ease, background-color .2s ease, border-color .2s ease;
+    }
+    .tag:hover {
+        transform: translateY(-2px);
+        background: rgba(248,250,252,0.24);
+        border-color: rgba(248,250,252,0.45);
     }
     .right {
         padding: .35rem .2rem;
@@ -286,9 +295,9 @@ if (isset($_POST['user_name'])) {
             <h1>Welcome Back to Online Farm</h1>
             <p>Access crop guidance, fertilizer data, and your personalized farm workflow with one secure login.</p>
             <div class="tag-row">
-                <span class="tag">Crop Insights</span>
-                <span class="tag">Fertilizer Hub</span>
-                <span class="tag">Farmer Dashboard</span>
+                <a class="tag" href="crop_insights.php">Crop Insights</a>
+                <a class="tag" href="fertilizer_hub.php">Fertilizer Hub</a>
+                <a class="tag" href="farmer_dashboard.php">Farmer Dashboard</a>
             </div>
         </article>
 
