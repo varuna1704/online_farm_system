@@ -195,6 +195,7 @@
         include "con_pg.php";
         $query = "SELECT * FROM home";
         $res = pg_query($con, $query) or die(pg_last_error($con));
+        $seen_images = array();
 
         while ($row = pg_fetch_assoc($res))
         {
@@ -203,6 +204,13 @@
             if ($decoded !== false && $decoded !== '') {
                 $img_src = $decoded;
             }
+
+            $image_key = md5($img_src);
+            if (isset($seen_images[$image_key])) {
+                continue;
+            }
+            $seen_images[$image_key] = true;
+
             echo '<article class="reveal"><img src="' . htmlspecialchars($img_src, ENT_QUOTES, 'UTF-8') . '" alt="Farm Image"></article>';
         }
         pg_close($con);
